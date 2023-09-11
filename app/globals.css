@@ -1,0 +1,116 @@
+@tailwind base;
+@tailwind components;
+/*@import url('https://fonts.googleapis.com/css2?family=Bungee+Shade&family=Roboto+Mono&display=swap');
+*/
+
+
+
+
+@layer components {
+  .move-div-blue {
+    @apply absolute;
+    animation: moveDivBlue 1s ease-in-out forwards;
+  }
+
+  @keyframes moveDivBlue {
+    0% {
+      left: 0;
+      top: 0;
+      transform: rotate(30deg)
+    }
+    100% {
+      left: 50%;
+      top: 50%;
+      transform: rotate(0deg)
+    }
+  }
+}
+
+
+@layer components {
+  .move-div-red {
+    @apply absolute;
+    animation: moveDivRed 1s ease-in-out forwards;
+  }
+
+  @keyframes moveDivRed {
+    0% {
+      right: 0;
+      top: 0;
+      transform: rotate(30deg)
+    }
+
+    100% {
+      right: 50%;
+      top: 50%;
+      transform: rotate(0deg)
+    }
+  }
+}
+
+
+
+
+
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+}
+
+
+
+
+.red-clip-path {
+  clip-path: polygon(100% 100%, 0% 0%, 0% 75%, 0% 100%);
+}
+
+
+.blue-clip-path {
+  clip-path: polygon(100% 0%, 100% 50%, 50% 100%, 0% 100%);
+}
+
+.triangle {
+  width: 0;
+  height: 0;
+  border-left: 20vh solid transparent;
+  border-right: 50vh solid transparent;
+  border-bottom: 200vh solid;
+  position: absolute;
+  top: 100%;
+  left: 75%;
+  transform-origin: 0 0;
+}
+
+
+ @font-face {
+  font-family: "bungee-shade";
+  font-style: "Regular";
+  src: url('/fonts/BungeeShade-Regular.ttf');
+ }
+
+ @font-face {
+  font-family: "Sniglet";
+  font-style: "ExtraBold";
+  src: url('/fonts/Sniglet-ExtraBold.ttf');
+ }
