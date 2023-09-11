@@ -70,7 +70,7 @@ tl.play();
 });
     Composite.add(world, boxes);
 
-    Matter.Runner.run(engine, world);
+   Matter.Runner.run(engine);
     Matter.Render.run(render);
 
     Matter.Events.on(render, 'afterRender', () => {
