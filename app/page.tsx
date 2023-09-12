@@ -9,7 +9,9 @@ export default function Home() {
 
 
     return (
-        <div className="bg-white"><Layout/></div>
+        <div className="bg-white w-full h-[100%]">
+                <Layout />
+        </div>
         
 
     )

@@ -6,23 +6,50 @@ import React, { useEffect } from 'react';
 import Matter from 'matter-js';
 
 const TextPhysics: React.FC = () => {
+  let groundWidth: number = 0.9 * window.innerWidth;
+  let screenWidth: number = window.innerWidth;
+
+
   useEffect(() => {
     const engine = Matter.Engine.create();
     const Composite = Matter.Composite;
     const { world } = engine;
+    
+
 
     const render = Matter.Render.create({
       element: document.getElementById('textPhysicsContainer') as HTMLElement,
       engine,
       options: {
-        width: window.innerWidth * 0.8,
+        width: window.innerWidth * 0.95,
         height: 220,
         wireframes: false,
         background: 'white'
       },
     });
 
-    const ground = Matter.Bodies.rectangle(-350 + window.innerWidth / 2, 200, window.innerWidth, 10, { isStatic: true, render: {fillStyle: '#44aacf'} });
+
+    const handleResize = () => {
+      render.canvas.width = window.innerWidth;
+      render.canvas.style.width = '100%';  // Ensure the canvas takes up the full window width
+      groundWidth = 0.9 * window.innerWidth;
+      
+      Matter.Body.setPosition(ground, {
+        x: groundWidth / 1.8,
+        y: 200
+      });
+    };
+
+    window.addEventListener('resize', handleResize);
+  
+    const ground = Matter.Bodies.rectangle(
+      groundWidth / 1.8, 
+      200, 
+      groundWidth + 10, 
+      10, 
+      { isStatic: true, render: { fillStyle: '#44aacf' } }
+    );
+
    Composite.add(world, [ground]);
 
     const text = "John Marren".split('');
@@ -31,7 +58,7 @@ const TextPhysics: React.FC = () => {
     const boxes: any[] = [];
 
     for (const letter of text) {
-      const box = Matter.Bodies.rectangle(x + Math.random() * 600, y , 30, 30, {render: {fillStyle: 'white'}});
+      const box = Matter.Bodies.rectangle(x + Math.random() * window.innerWidth / 3, y , 30, 30, {render: {fillStyle: 'white'}});
       boxes.push(box);
     //   x += 60;
     y += 10;
@@ -39,19 +66,47 @@ const TextPhysics: React.FC = () => {
 
     const tl = gsap.timeline({paused: true, delay: 2, startTime: 2});
 
-let targetX = 100; // Starting X-coordinate for the first letter
+let targetX: number = 100; // Starting X-coordinate for the first letter
+let spacing = 60;  // Default spacing between boxes
+let targetY = 50;// Y-coordinate for all letters
 
 
-let targetY = 100;// Y-coordinate for all letters
+// Update spacing based on screen width
+if (screenWidth < 250) {
+  spacing = 50;  // Closer together
+  targetX = 50;
+} else if (screenWidth < 400) {
+  spacing = Math.floor(screenWidth / 10);  // Adaptive spacing based on screen width
+} else if (screenWidth < 600) {
+  spacing = 60;  // Default spacing
+}
 
-// Loop through all boxes (letters)
+
 boxes.forEach((box, i) => {
-  // Add a tween to the timeline for each box
+
+
+  if (screenWidth > 600) {
+    // Keep it as originally intended
+    // No changes to spacing or positioning
+  } else if (screenWidth <= 600) {
+    if (text[i] === 'M') {
+      targetY += 40;  // Move to the next line (+20 in Y)
+      targetX = 100;  // Reset the X position to the start of line
+    }
+  } else if (screenWidth <= 100 && screenWidth > 150) {
+    // The spacing is already adaptive in this case based on screenWidth
+  } // No else clause needed for screenWidth < 250 as it's handled during initialization
+
+
+
   tl.to(box.position, {
     duration: 1, // 1 second for each letter
     x: targetX,
     y: targetY + Math.random() * 10,
     ease: "power3.inOut", // ease type can be changed
+    onStart: () => {
+      box.collisionFilter.mask = 0x0000;
+    },
     onUpdate: () => {
       // Sync with Matter.js body if needed
     },
@@ -65,8 +120,8 @@ boxes.forEach((box, i) => {
   }, "-=0.5"); // Overlap of 0.5 seconds
 
   // Increment the target X-coordinate for the next letter
-  targetX += 60;
-tl.play();
+  targetX += spacing;
+  tl.play();
 });
     Composite.add(world, boxes);
 
@@ -92,149 +147,17 @@ tl.play();
           context.strokeText(letter, box.position.x - 25, box.position.y + 25);
         }
       });
-  }, []);
-
-  return <div id="textPhysicsContainer" style={{ width: '800px', height: '600px' }}></div>;
-};
-
-export default TextPhysics;
-/*
-import React, { useEffect } from 'react';
-import Matter from 'matter-js';
 
 
-const TextPhysics: React.FC = () => {
-  useEffect(() => {
-     var Runner = Matter.Runner;   
-     var Composite = Matter.Composite;
-     const engine = Matter.Engine.create();
+      return () => {
+        tl.kill();  // Destroy the GSAP timeline
+        window.removeEventListener('resize', handleResize);
 
-     const { world } = engine;
-
-    const render = Matter.Render.create({
-      element: document.getElementById('textPhysicsContainer') as HTMLElement,
-      engine,
-      options: {
-        width:  800,
-        height: 600,
-        wireframes: false,
-      },
-    });
-    
-   
-    var runner = Runner.create();
-
-
-    const ground = Matter.Bodies.rectangle(400, 550, 810, 60, { isStatic: true });
-    Composite.add(world, [ground]);
-
-    const text = "J";
-    let y = 300;
-    let x = 200
-    const boxes: any = [];
-
-
-    const noCollisionFilter = { category: 0x0002 };
-
-    for (const letter of text.split('')) {
-        const box = Matter.Bodies.rectangle(x, 400, 50, 50);
-        boxes.push(box);
-        x += 60;
-      }
-  
-    //   Matter.World.add(world, boxes);
-  
-
-    
-Composite.add(world, boxes);
-   // Matter.World.add(world, boxes);
-    boxes.forEach((box) => {
-        console.log(`Box at x: ${box.position.x}, y: ${box.position.y}`);
-      });
-
-    Matter.Runner.run(runner, engine);
-    Matter.Render.run(render);
-
-
-
-    // Sync the text with the boxes
-    Matter.Events.on(render, 'afterRender', () => {
-      const context = render.context;
-      context.fillStyle = 'green';
-
-      for (let i = 0; i < boxes.length; i++) {
-        const box = boxes[i];
-        const letter = text[i];
-
-        context.font = '50px sniglet';
-        
-        context.fillText(
-          letter,
-          box.position.x - 25,
-          box.position.y + 25
-        );
-      }
-    });
-
-
-    const tl = gsap.timeline({paused: true});
-
-let targetX = 200; // Starting X-coordinate for the first letter
-let targetY = 300; // Y-coordinate for all letters
-
-// Loop through all boxes (letters)
-boxes.forEach((box, i: Number) => {
-  // Add a tween to the timeline for each box
-  tl.to(box.position, {
-    duration: 1, // 1 second for each letter
-    x: targetX,
-    y: targetY,
-    ease: "power3.inOut", // ease type can be changed
-    onUpdate: () => {
-      // Sync with Matter.js body if needed
-    },
-    onComplete: () => {
-        // Stop the box by setting its velocity to zero
-        Matter.Body.setVelocity(box, { x: 0, y: 0 });
-  
-        // Optional: Disable gravity for this box
-        box.isStatic = true;
-      }
-  }, "-=0.5"); // Overlap of 0.5 seconds
-
-  // Increment the target X-coordinate for the next letter
-  targetX += 60;
-});
-
-// setTimeout(() => {
-//     // Enable collisions again
-//     boxes.forEach((box) => {
-//       box.collisionFilter = {};
-//     });
-//   }, 50);
-
-
-Matter.Events.on(engine, 'afterUpdate', function() {
-    console.log('Velocity:', boxes[0].velocity, ' Position: ', boxes[0].position);
-  });
-
-
-
-  const box = Matter.Bodies.rectangle(x, y, 50, 50, {
-    isStatic: true,
-  });
-  setTimeout(() => { Matter.Body.setStatic(box, false); }, 10);
-
-  
-setTimeout(() => {
-tl.play();
-}, 5000);
-
+      };
 
   }, []);
 
-  return <div id="textPhysicsContainer" style={{ width: '800px', height: '600px' }}></div>;
+  return <div id="textPhysicsContainer" className="relative h-64" style={{ width: '100%' }}></div>;
 };
 
 export default TextPhysics;
-*/
