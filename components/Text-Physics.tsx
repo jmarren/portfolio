@@ -6,11 +6,13 @@ import React, { useEffect } from 'react';
 import Matter from 'matter-js';
 
 const TextPhysics: React.FC = () => {
-  let groundWidth: number = 0.9 * window.innerWidth;
-  let screenWidth: number = window.innerWidth;
+
 
 
   useEffect(() => {
+    // if (typeof window !== 'undefined') {
+    let groundWidth: number = 0.9 * window.innerWidth;
+    let screenWidth: number = window.innerWidth;
     const engine = Matter.Engine.create();
     const Composite = Matter.Composite;
     const { world } = engine;
@@ -148,13 +150,13 @@ boxes.forEach((box, i) => {
         }
       });
 
-
+    
       return () => {
         tl.kill();  // Destroy the GSAP timeline
         window.removeEventListener('resize', handleResize);
 
       };
-
+   // }
   }, []);
 
   return <div id="textPhysicsContainer" className="relative h-64" style={{ width: '100%' }}></div>;
