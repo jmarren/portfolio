@@ -1,12 +1,20 @@
-import Layout from '../../components/Layout'
+import Layout from '../../components/Portfolio-Layout'
+import LoveJames from '@/components/Love-James';
+
 
 
 function Portfolio() {
+
+
+
     return ( 
         <div className="bg-white w-full h-[100%]">
-            <div className="bg-blue-500 w-[100%] max-h-full">
-                <Layout />
-            </div>
+                
+                <div>
+                     <Layout />
+                </div>
+                {/* <LoveJames/> */}
+            
         </div>
         
 

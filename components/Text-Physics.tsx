@@ -10,7 +10,7 @@ const TextPhysics: React.FC = () => {
 
 
   useEffect(() => {
-    // if (typeof window !== 'undefined') {
+
     let groundWidth: number = 0.9 * window.innerWidth;
     let screenWidth: number = window.innerWidth;
     const engine = Matter.Engine.create();
@@ -60,7 +60,7 @@ const TextPhysics: React.FC = () => {
     const boxes: any[] = [];
 
     for (const letter of text) {
-      const box = Matter.Bodies.rectangle(x + Math.random() * window.innerWidth / 3, y , 30, 30, {render: {fillStyle: 'white'}});
+      const box = Matter.Bodies.rectangle(x + Math.random() * window.innerWidth / 3, y , 28, 28, {render: { fillStyle: "rgba(255, 255, 255, 0)"}});
       boxes.push(box);
     //   x += 60;
     y += 10;
@@ -156,7 +156,6 @@ boxes.forEach((box, i) => {
         window.removeEventListener('resize', handleResize);
 
       };
-   // }
   }, []);
 
   return <div id="textPhysicsContainer" className="relative h-64" style={{ width: '100%' }}></div>;

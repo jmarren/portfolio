@@ -1,4 +1,4 @@
-import Navbar from './Navbar';
+import Navbar from './Home-Navbar';
 import Physics from './Physics'
 import TextPhysics from './Text-Physics';
 
@@ -6,7 +6,7 @@ export default function Layout() {
     const links = [
         { name: 'Home', url: '/' },
         { name: 'Portfolio', url: '/portfolio' },
-        { name: 'Contact', url: '/contact' },
+        // { name: 'Contact', url: '/contact' },
         { name: 'Resume', url: '/pdfs/Resume_9_8.pdf'}
       ];
     
