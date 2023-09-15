@@ -49,7 +49,25 @@
 }
 
 
+.flex-grow {
+  flex-grow: 1;
+}
 
+.flex-col {
+  flex-direction: column;
+}
+
+.flex {
+  display: flex;
+}
+
+.bg-red-500 {
+  background-color: #F56565;
+}
+
+.bg-blue-500 {
+  background-color: #4299E1;
+}
 
 
 @tailwind utilities;
