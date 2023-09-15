@@ -6,7 +6,7 @@ export default function Layout() {
     const links = [
         { name: 'Home', url: '/' },
         { name: 'Portfolio', url: '/portfolio' },
-        // { name: 'Contact', url: '/contact' },
+        // { name: 'Github', url: '/contact' },
         { name: 'Resume', url: '/pdfs/Resume_9_8.pdf'}
       ];
     

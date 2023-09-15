@@ -114,9 +114,9 @@ import React, {
     return (
       <>
        <group
-          position={[-2,2,-4]}
+          position={[-3,3,-4]}
           rotation={[Math.PI / 2, 0, (3 * Math.PI) / 2]}
-          scale={1}
+          scale={1.3}
           ref={lettersGroup}
         >
             {loveJamesLetters.map((letter, index) => 
@@ -126,7 +126,7 @@ import React, {
         <group
   position={[-2, 1, -4]}
   rotation={[Math.PI / 2, 0, (3 * Math.PI) / 2]}
-  scale={0.5}
+  scale={0.8}
   ref={eCommerceGroup}
 >
   {eCommerceLetters.map((letter, index) => {

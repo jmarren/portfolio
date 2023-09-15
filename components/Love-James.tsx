@@ -1,7 +1,7 @@
 "use client"
 
 import { Canvas } from "@react-three/fiber";
-import { OrthographicCamera } from "@react-three/drei";
+import { OrthographicCamera, Environment } from "@react-three/drei";
 import Heart from './Heart'
 import BubbleFont from "./Letters";
 import React, {Suspense} from 'react'
@@ -13,9 +13,13 @@ function LoveJames() {
         return (  
         <a href="https://lovej-d62f6.web.app/" target="_blank" rel="noopener noreferrer">
 
-<div className="h-full" >
-        <Canvas className="h-full w-32 z-[50]">
+<div className="h-full w-full" >
+        <Canvas className="h-full w-full z-[50] rounded-xl ">
         <OrthographicCamera top={-10}/>
+        <Environment
+            files="./HDRIs/industrial_sunset_puresky_4k.hdr"
+            background
+          />
             <Suspense fallback={null} >
                 <group>
                     <BubbleFont />

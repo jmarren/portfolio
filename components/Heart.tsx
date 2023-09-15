@@ -1,6 +1,6 @@
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { useFrame } from "@react-three/fiber";
-import { useLoader, useThree } from "@react-three/fiber";
+import {  useThree } from "@react-three/fiber";
 import { useRef, useEffect } from "react";
 import { useGLTF } from "@react-three/drei";
 
