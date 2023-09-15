@@ -14,7 +14,7 @@ function LoveJames() {
         <a href="https://lovej-d62f6.web.app/" target="_blank" rel="noopener noreferrer">
 
 <div className="h-full w-full" >
-        <Canvas className="h-full w-full z-[50] rounded-xl ">
+        <Canvas className="h-full w-full z-[50] rounded-xl border border-slate-400 ">
         <OrthographicCamera top={-10}/>
         <Environment
             files="./HDRIs/industrial_sunset_puresky_4k.hdr"

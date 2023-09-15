@@ -14,7 +14,7 @@ export default function Layout() {
 
 
     return (
-        <div className="h-[2000px] w-[100%] bg-white z-0 " style={{boxSizing: 'border-box'}}>        
+        <div className=" w-[100%] bg-white z-0 ">        
             <TextPhysics />
             <div className="w-[100%]">     
                 <Navbar links={links}/>

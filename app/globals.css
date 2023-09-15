@@ -4,6 +4,9 @@
 */
 
 
+body, div, h1, p {
+  @apply m-0 p-0;
+}
 
 
 @layer components {
@@ -132,3 +135,4 @@ body {
   font-style: "ExtraBold";
   src: url('/fonts/Sniglet-ExtraBold.ttf');
  }
+
