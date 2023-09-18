@@ -49,7 +49,7 @@ const TextPhysics: React.FC = () => {
       200, 
       groundWidth + 10, 
       10, 
-      { isStatic: true, render: { fillStyle: '#44aacf' } }
+      { isStatic: true, render: { fillStyle: '#44aacf' }, restitution: 0.5 }
     );
 
    Composite.add(world, [ground]);
@@ -60,7 +60,7 @@ const TextPhysics: React.FC = () => {
     const boxes: any[] = [];
 
     for (const letter of text) {
-      const box = Matter.Bodies.rectangle(x + Math.random() * window.innerWidth / 3, y , 28, 28, {render: { fillStyle: "rgba(255, 255, 255, 0)"}});
+      const box = Matter.Bodies.rectangle(x + Math.random() * window.innerWidth / 3, y , 28, 28, {render: { fillStyle: "rgba(255, 255, 255, 0)"}, restitution: 1.2});
       boxes.push(box);
     //   x += 60;
     y += 10;

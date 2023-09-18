@@ -24,10 +24,6 @@ function LoveJames() {
                 <group>
                     <BubbleFont />
                     <Heart />
-                    {/* <mesh scale={30} position={[0, -8, 0]} rotation={[Math.PI / 2, 0, 0]} receiveShadow >
-                        <planeGeometry />
-                        <meshStandardMaterial side={DoubleSide} color={'yellow'}/>
-                    </mesh> */}
                 </group>
             </Suspense>
             <ambientLight intensity={1.3} />
