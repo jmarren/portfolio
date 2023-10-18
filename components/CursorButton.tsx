@@ -1,16 +1,21 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, FC } from 'react';
 import Image from 'next/image';
 
-const CursorButton = ({ text }) => {
+interface Props {
+  text: string;
+}
+
+
+const CursorButton: FC<Props> = ({ text }) => {
   const [clicked, setClicked] = useState(false);
   const [positions, setPositions] = useState(Array(100).fill({ x: 0, y: 0 }));
   const [currentPosition, setCurrentPosition] = useState({ x: -610, y: -340 });
-  const [intervalId, setIntervalId] = useState(null);
+  const [intervalId, setIntervalId] = useState<NodeJS.Timeout | null>(null);
 
   // Handle mouse move events and update currentPosition
   useEffect(() => {
-    const handleMouseMove = (e) => {
+    const handleMouseMove = (e: MouseEvent) => {
       const x = e.clientX - 300;
       const y = e.clientY - 345;
       setCurrentPosition({ x, y });

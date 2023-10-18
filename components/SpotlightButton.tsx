@@ -14,17 +14,20 @@ const SpotlightButton: React.FC<SpotlightButtonProps> = ({ text, onClick }) => {
     onClick();
   };
 
+  useEffect(() => {
     document.addEventListener('mousemove', (e) => {
     document.documentElement.style.setProperty('--x', `${e.clientX}px`);
     document.documentElement.style.setProperty('--y', `${e.clientY}px`);
-});
+  
+  })
+}, []);
 
 const styleClass = "opacity-100 hover:opacity-50 active:scale-75 ring-2 ring-blue-400 ring-inset transition-all bg-blue-500 w-full text-white px-4 py-2 rounded-lg focus:ring-slate-200 focus:ring-inset" 
 const spotlightOnStyle = "opacity-100 hover:opacity-50 active:scale-75 transition-all bg-blue-500 w-full text-white px-4 py-2 rounded-lg focus:ring-slate-400 focus:ring-inset movingGradient"
 
 
   useEffect(() => {
-    if (spotlightOn && buttonRef.current) {
+    if (spotlightOn && buttonRef.current && typeof document !== undefined) {
       const rect = buttonRef.current.getBoundingClientRect();
       const spotlight = document.getElementById('spotlight-hole');
       if (spotlight) {
