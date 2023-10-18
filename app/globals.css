@@ -75,7 +75,7 @@ body, div, h1, p {
 
 @tailwind utilities;
 
-:root {
+/* :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
@@ -97,7 +97,7 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
-}
+} */
 
 
 
@@ -136,3 +136,160 @@ body {
   src: url('/fonts/Sniglet-ExtraBold.ttf');
  }
 
+
+
+ @keyframes bounce {
+  0%, 100% {
+    transform: translateX(15px);
+  }
+  50% {
+    transform: translateX(80px);
+  }
+}
+@keyframes switch {
+  0% {
+    transform: translateX(0px); 
+  } 
+  100% {
+    transform:translateX(145px)
+  }
+}
+
+.natural-bounce {
+  animation: bounce 2s cubic-bezier(0.68, -0.15, 0, 0) infinite;
+}
+
+.switch-sides{
+  animation: switch 0.1s linear;
+  animation-fill-mode: forwards;
+} 
+
+.bounce {
+  animation: bounce 1.5s ease-in-out infinite;
+}
+
+
+/* Spotlight.css */
+/* Spotlight.css */
+
+.spotlight {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.spotlight::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at  var(--x, 0px) var(--y, 0px), transparent 0%, rgba(0, 0, 0, 0.9) 5%);
+  pointer-events: none;
+}
+
+:root {
+  --x: 50px;
+  --y: 200px;
+}
+
+.movingGradient {
+  margin: 0;
+  animation: movingGradient  10s infinite ease-in-out;
+  background: linear-gradient(60deg, red, yellow, blue, green, purple, rgb(231, 174, 67));  
+  background-size: 300% 300%;
+  height: 100%
+}
+
+@keyframes movingGradient {
+  0% {
+      background-position: 0% 50%;
+  }
+  50% {
+      background-position: 100% 50%;
+  }
+  100% {
+      background-position: 0% 50%;
+  }
+}
+
+
+.tunnel {
+  width: 300px;
+  height: 100px;
+  position: relative;
+  border-top-left-radius: 50% 50px;
+  border-top-right-radius: 50% 50px;
+  border-bottom-left-radius: 50% 50px;
+  border-bottom-right-radius: 50% 50px;
+  border: 5px solid gray;
+  overflow: hidden;
+}
+
+.slider-button {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  transition: all 1s ease-in-out;
+}
+
+.slider-button.moved {
+  left: calc(100% - 70px); /* Adjust this value based on button's width */
+}
+
+
+
+@keyframes fallAndBounce {
+  0% {
+    transform: translateY(0px);
+  }
+  20%, 100% {
+    transform: translateY(var(--distance-to-bottom));
+    animation-timing-function: cubic-bezier(0.3, -0.36, 0.7, 1.51);
+  }
+  30% {
+    transform: translateY(calc(var(--distance-to-bottom) - 100px));
+  }
+  40% {
+    transform: translateY(var(--distance-to-bottom));
+  }
+  50% {
+    transform: translateY(calc(var(--distance-to-bottom) - 50px));
+  }
+  70% {
+    transform: translateY(var(--distance-to-bottom));
+  }
+  80% {
+    transform: translateY(calc(var(--distance-to-bottom) - 25px));
+  }
+  90% {
+    transform: translateY(var(--distance-to-bottom));
+  }
+}
+
+
+
+.fallDown {
+  animation: fallAndBounce 3s ease-in-out forwards;
+}
+
+
+
+.button-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.button-section {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+  align-items: center;
+  width: 50%;
+}

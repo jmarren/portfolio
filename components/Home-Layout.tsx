@@ -9,14 +9,11 @@ export default function Layout() {
         // { name: 'Github', url: '/contact' },
         { name: 'Resume', url: '/pdfs/Resume_9_8.pdf'}
       ];
-    
-
-
 
     return (
         <div className=" w-[100%] bg-white z-0 ">        
             <TextPhysics />
-            <div className="w-[100%]">     
+            <div className="w-[100%] top-[280px] fixed">     
                 <Navbar links={links}/>
             </div>
         </div>

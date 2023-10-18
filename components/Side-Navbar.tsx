@@ -8,7 +8,7 @@ interface NavbarProps {
 
 const Navbar: FC<NavbarProps> = ({ links }) => {
   return (
-<div className="grid grid-rows-4 justify-start pl-[10%] pr-[10%] ml-5 top-0 ">
+  <div className="grid grid-rows-4 justify-start pl-[10%] pr-[10%] ml-5 top-0 ">
      {links.map((link, index) => (
           <button key={index} 
           style={{

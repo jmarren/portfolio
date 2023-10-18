@@ -11,23 +11,29 @@ import { DoubleSide } from "three";
 
 function LoveJames() {
         return (  
-        <a href="https://lovej-d62f6.web.app/" target="_blank" rel="noopener noreferrer">
 
+        <a href="https://lovej-d62f6.web.app/" target="_blank" rel="noopener noreferrer">
+<Suspense fallback={<div>Loading...</div>} > 
 <div className="h-full w-full" >
-        <Canvas className="h-full w-full z-[50] rounded-xl border border-slate-400 ">
+         
+         <Canvas className="h-full w-full z-[50] rounded-xl border border-slate-400 ">
         <OrthographicCamera top={-10}/>
         <Environment
             files="./HDRIs/industrial_sunset_puresky_4k.hdr"
             background
           />
-            <Suspense fallback={null} >
+          
                 <group>
+                    <Suspense fallback={null} >
                     <BubbleFont />
                     <Heart />
+                    </Suspense>
                 </group>
-            </Suspense>
+            
             <ambientLight intensity={1.3} />
-        </Canvas></div>
+        </Canvas>
+       
+        </div> </Suspense>
         </a>
     );
 }
