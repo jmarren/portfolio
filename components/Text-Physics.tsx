@@ -154,7 +154,7 @@ boxes.forEach((box, i) => {
       };
   }, []);
 
-  return <div id="textPhysicsContainer" className="fixed h-[250px] top-[-230px]" style={{ width: '100%' }}></div>;
+  return <div id="textPhysicsContainer" className="fixed h-[250px]" style={{ width: '100%' }}></div>;
 };
 
 export default TextPhysics;
