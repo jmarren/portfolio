@@ -22,7 +22,7 @@ function BallBounceButton() {
     const handleClick = () => {
         setClicked(!clicked)        
         if (buttonRef.current) {
-        buttonRef.current.style.top = `${rectTop  }px`;
+        buttonRef.current.style.top = `${rectTop - 25 }px`;
         } 
 
 
