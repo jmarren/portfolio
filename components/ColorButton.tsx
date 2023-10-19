@@ -5,7 +5,7 @@ function ColorButton() {
   const [wordsColor, setWordsColor] = useState('#FFFFFF')
   const [ringColor, setRingColor] = useState('#FFFFFF')
 
-  let style={backgroundColor:`${color}`, color: `${wordsColor}`}
+  let style={backgroundColor:`${color}`, color: `${wordsColor}`, transform: 'rotateY(360deg)'}
 
   function getRandomHexColor(): string {
   let letters = '0123456789ABCDEF';
@@ -74,8 +74,9 @@ useEffect(() => {
   setWordsColor(getVisibleTextColor(color));
   setRingColor(`ring-[${getDarkerShade(color, 0)}]`)
   const buttonElement = document.getElementById('myColorButton');
+
   if (buttonElement) {
-        console.log('Class changed:', buttonElement.className);
+    console.log('Class changed:', buttonElement.className);
   };
 
 },[color])
@@ -89,7 +90,7 @@ useEffect(() => {
   }
     return (
         <div >
-          <button id='myColorButton' className={`hover:bg-slate-300 w-32 h-32 p-4 m-3 rounded-xl transition duration-300 ring-2 ring-inset ${ringColor} active:scale-110 ease-in-out`}
+          <button id='myColorButton' className={`hover:bg-slate-300 w-32 h-32 p-4 m-3 rounded-xl transition duration-300 ring-2 ring-inset  active:scale-110 ease-in-out`}
           style={style}
           onClick={handleClick}
           >
