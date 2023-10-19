@@ -1,5 +1,6 @@
 'use client'
 
+import { Suspense } from 'react';
 import ButtonOne from '@/components/ButtonOne';
 import ButtonTwo from '@/components/ButtonTwo';
 import SpotlightButton from '@/components/SpotlightButton';
@@ -35,9 +36,13 @@ const handleClick = () => {
                     <SpinningButton />
                     <ColorButton />
                     </div >
-                    <div className='w-28 h-[410px] relative'>
-                     <BallBounceButton />                        
+                   
+                    <div className='w-1/2 h-[410px] relative'>
+                      <Suspense >
+                        <BallBounceButton />       
+                           </Suspense>           
                     </div>
+                    
                     </div>              
             </section>
         </main>

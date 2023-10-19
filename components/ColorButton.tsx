@@ -90,7 +90,7 @@ useEffect(() => {
   }
     return (
         <div >
-          <button id='myColorButton' className={`hover:bg-slate-300 w-32 h-32 p-4 m-3 rounded-xl transition duration-300 ring-2 ring-inset  active:scale-110 ease-in-out`}
+          <button id='myColorButton' className={`hover:bg-slate-300 w-5/6 h-32 p-4 m-3 rounded-xl transition duration-300 ring-2 ring-inset  active:scale-110 ease-in-out`}
           style={style}
           onClick={handleClick}
           >

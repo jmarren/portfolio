@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, FC } from 'react';
 import Image from 'next/image';
 
@@ -55,7 +54,7 @@ const CursorButton: FC<Props> = ({ text }) => {
 
 
   return (
-    <div className="w-48 m-3">
+    <div className="w-[5/6] m-3">
       <button
         className="active:scale-75 w-full bg-yellow-400 text-white px-10 py-4 rounded-3xl transition ease-in-out ring-2 ring-inset ring-yellow-500"
         onClick={() => setClicked((prev) => !prev)}

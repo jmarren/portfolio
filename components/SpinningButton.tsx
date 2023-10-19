@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 const SpinningButton: React.FC = () => {
     const [isSpinning, setIsSpinning] = useState(false);
     const [isRunning, setIsRunning] = useState(false);
-
+    const spinButtonContainer = useRef<HTMLDivElement | null>(null); 
 
     const toggleSpin = () => {
         setIsRunning(!isSpinning);
@@ -25,10 +25,18 @@ const SpinningButton: React.FC = () => {
         };
       }, [isRunning]);
 
+      useEffect(() => {
+        if (spinButtonContainer.current) {
+
+          window.innerWidth > 400 ? document.documentElement.style.setProperty('--bounceButtonWidth', `${spinButtonContainer.current.offsetWidth * 1.5}px`) : document.documentElement.style.setProperty('--bounceButtonWidth', `${spinButtonContainer.current.offsetWidth * 0.8 }px`) // Set CSS variable        
+        }
+
+      }, [])
+
 
 
     return (
-        <div className='m-3 w-32 h-64'> 
+        <div className='m-3 w-5/6 h-64' ref={spinButtonContainer}> 
         <button
             className='bg-orange-500 rounded-xl text-white ring-4 ring-inset ring-orange-400 w-full h-full  hover:scale-75'
             onClick={toggleSpin}
