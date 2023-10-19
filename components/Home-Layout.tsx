@@ -11,7 +11,7 @@ export default function Layout() {
       ];
 
     return (
-        <div className=" w-[100%] bg-white z-0 ">        
+        <div className=" w-[100%] parkay-floor z-0 ">        
             <TextPhysics />
             <div className="w-[100%] top-[280px] fixed">     
                 <Navbar links={links}/>

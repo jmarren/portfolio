@@ -25,7 +25,7 @@ const TextPhysics: React.FC = () => {
         width: window.innerWidth * 0.95,
         height: 220,
         wireframes: false,
-        background: 'white'
+        background: 'transparent'
       },
     });
 
