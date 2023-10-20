@@ -8,12 +8,14 @@ import Matter from 'matter-js';
 const TextPhysics: React.FC = () => {
   useEffect(() => {
 
-    const container = document.getElementById('textPhysicsContainer') as HTMLElement;
-    const containerWidth = container.getBoundingClientRect().width
+    let container = document.getElementById('textPhysicsContainer') as HTMLElement;
+    let containerWidth = container.getBoundingClientRect().width
     console.log(containerWidth)
 
     
     let groundWidth: number = 0.9 * containerWidth;
+    let originalGroundWidth = groundWidth + 10;
+    let originalGroundHeight = 10;
     let screenWidth: number = containerWidth;
     const engine = Matter.Engine.create();
     const Composite = Matter.Composite;
@@ -34,16 +36,32 @@ const TextPhysics: React.FC = () => {
 
 
     const handleResize = () => {
+      const container = document.getElementById('textPhysicsContainer') as HTMLElement;
       const newWidth = container.getBoundingClientRect().width;
       render.canvas.width = newWidth;
-      render.canvas.style.width = '83.3%';  // Ensure the canvas takes up the full window width
+      render.canvas.style.width = '100%';  // Ensure the canvas takes up the full window width
       render.canvas.style.minHeight = '250px';
-      groundWidth = 0.9 * containerWidth;
+      groundWidth = 0.9 * newWidth;
       
+
+      const scaleX = groundWidth / originalGroundWidth;
+      const scaleY = 1;  // Keep the height scale as 1 to not affect the height
+    
+      // Apply the scale to the ground
+      Matter.Body.scale(ground, scaleX, scaleY);
+      
+      // Reset the original ground dimensions for future scaling
+      originalGroundWidth = groundWidth;
+
+
+
+
       Matter.Body.setPosition(ground, {
-        x: groundWidth / 1.8,
+        x: newWidth / 2,
         y: 200
       });
+
+
     };
 
     window.addEventListener('resize', handleResize);
@@ -159,7 +177,7 @@ boxes.forEach((box, i) => {
       };
   }, []);
 
-  return <div id="textPhysicsContainer" className=" h-[250px]  relative" style={{ width: '100%' }}></div>;
+  return <div id="textPhysicsContainer" className=" h-[250px] justify-center relative border border-black" style={{ width: '100%' }}></div>;
 };
 
 export default TextPhysics;
