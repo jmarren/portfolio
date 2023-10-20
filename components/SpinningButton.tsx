@@ -38,7 +38,7 @@ const SpinningButton: React.FC = () => {
     return (
         <div className='m-3 w-5/6 h-64' ref={spinButtonContainer}> 
         <button
-            className='bg-orange-500 rounded-xl text-white ring-4 ring-inset ring-orange-400 w-full h-full  hover:scale-75'
+            className='bg-orange-500 rounded-xl text-white ring-4 ring-inset ring-orange-400 w-full h-full  hover:scale-75 hover:bg-orange-400 hover:text-black'
             onClick={toggleSpin}
             style={{
                 transition: 'transform 0.5s',

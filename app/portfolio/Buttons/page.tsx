@@ -3,7 +3,13 @@ import ButtonsGrid from "@/components/ButtonsGrid";
 
 function Page() {
     return ( 
-        <div className="w-full h-screen topography fixed top-0 shadow-lg">
+        <div className="w-full h-screen topography fixed top-0 ">
+          <a href='/portfolio' >
+            <button
+            
+            className='fixed top-0 left-0 bg-orange-500 h-[2.5rem] px-3 text-white rounded-lg m-4 ring-2 ring-inset ring-orange-600 shadow-xl' >
+              Back
+            </button></a>
                 <ButtonsGrid />
         </div>
      );

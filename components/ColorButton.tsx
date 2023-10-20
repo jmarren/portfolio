@@ -1,11 +1,11 @@
 import {useState, useEffect} from 'react'
 
 function ColorButton() {
-  const [color, setColor] = useState('#FFA500');
-  const [wordsColor, setWordsColor] = useState('#FFFFFF')
-  const [ringColor, setRingColor] = useState('#FFFFFF')
+  const [color, setColor] = useState('#f97316');
+  // const [wordsColor, setWordsColor] = useState('white')
+  // const [ringColor, setRingColor] = useState('#FFFFFF');
 
-  let style={backgroundColor:`${color}`, color: `${wordsColor}`, transform: 'rotateY(360deg)'}
+  // let style={backgroundColor:`${color}`, color: `${wordsColor}`, transform: 'rotateY(360deg)'}
 
   function getRandomHexColor(): string {
   let letters = '0123456789ABCDEF';
@@ -63,35 +63,32 @@ function getDarkerShade(color: string, amount: number): string {
   return RGBToHex(r, g, b);
 }
 
-useEffect(() => {
-  console.log('ringColor: ', ringColor)
-  console.log(document.getElementById('button'))
-},[ringColor])
-
 
 
 useEffect(() => {
-  setWordsColor(getVisibleTextColor(color));
-  setRingColor(`ring-[${getDarkerShade(color, 0)}]`)
-  const buttonElement = document.getElementById('myColorButton');
+  document.documentElement.style.setProperty('--colorButtonColor', `${color}`); // Set CSS variable    
+  let hoverColor = getDarkerShade(color, 30)    
+  document.documentElement.style.setProperty('--colorButtonHoverColor', `${hoverColor}`); // Set CSS variable        
+  let ringColor = getDarkerShade(color, -30);
+  document.documentElement.style.setProperty('--colorButtonRingColor', `${ringColor}`); // Set CSS variable        
+  
 
-  if (buttonElement) {
-    console.log('Class changed:', buttonElement.className);
-  };
-
-},[color])
-
+}, [color]);
 
 
 
 
-  const handleClick = () => {
-    setColor(getRandomHexColor());
-  }
+
+const handleClick = () => {
+  const newColor = getRandomHexColor();
+  setColor(newColor);
+}
+
+
     return (
         <div >
-          <button id='myColorButton' className={`hover:bg-slate-300 w-5/6 h-32 p-4 m-3 rounded-xl transition duration-300 ring-2 ring-inset  active:scale-110 ease-in-out`}
-          style={style}
+          <button id='myColorButton' className='hover:bg-[--colorButtonHoverColor] w-5/6 h-32 p-4 m-3 rounded-xl transition duration-100 ring-2 ring-inset ring-[--colorButtonHoverColor] bg-[--colorButtonColor] text-white hover:text-black active:scale-110 ease-in-out'
+          // style={style}
           onClick={handleClick}
           >
             Click Me!

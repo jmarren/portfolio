@@ -21,10 +21,10 @@ const ButtonTwo: React.FC<ButtonTwoProps> = ({ text, onClick }) => {
 
 
   const divClass = isClicked 
-    ? 'bg-slate-300 m-3 w-5/6 h-12  ring-2 ring-inset ring-slate-200  rounded-full  flex justify-start'
-    : 'bg-slate-300 m-3 w-5/6 h-12 ring-2 ring-inset ring-slate-200 box-border rounded-full  flex  justify-end'
+    ? 'bg-slate-300 hover:bg-slate-400 m-3 w-5/6 h-12  ring-2 ring-inset ring-slate-200  rounded-full  flex justify-start cursor-pointer'
+    : 'bg-slate-300 hover:bg-slate-400 m-3 w-5/6 h-12 ring-2 ring-inset ring-slate-200 box-border rounded-full  flex  justify-end cursor-pointer'
   return (
-    <div className={divClass}> 
+    <div className={divClass} onClick={handleButtonClick} > 
     <button className={buttonClass} onClick={handleButtonClick}>
       {text}
     </button>

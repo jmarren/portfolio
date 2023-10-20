@@ -9,13 +9,13 @@ function BallBounceButton() {
 
     const buttonRef = useRef<HTMLButtonElement | null>(null);
 
-    let unclickedClass=`w-[--bounceButtonWidth] h-[410px] rounded-md bg-indigo-500 ring ring-inset ring-blue-600 m-3 mb-4 absolute text-white top-[-10px] `
+    let unclickedClass=`w-[--bounceButtonWidth] h-[410px] hover:bg-lime-300 rounded-md active:rounded-3xl   bg-lime-400 ring ring-inset ring-lime-500 active:ring-sky-200 m-3 mb-4 absolute text-white hover:text-black top-[-10px] `
 
     if (!initialClass) {
-        unclickedClass=`w-[--bounceButtonWidth] h-[410px] rounded-md bg-indigo-500 ring ring-inset ring-blue-600 m-3 mb-4 fixed text-white  `
+        unclickedClass=`w-[--bounceButtonWidth] h-[410px] rounded-md active:rounded-3xl bg-lime-400 hover:bg-lime-300 ring ring-inset  ring-lime-500 active:ring-sky-200 m-3 mb-4 fixed text-white hover:text-black  `
     }
 
-    const clickedClass='w-[--bounceButtonWidth] h-[--bounceButtonWidth] rounded-full bg-indigo-500 ring ring-inset ring-blue-700 fallDown sticky transition-all m-3 z-100 text-white'
+    const clickedClass='w-[--bounceButtonWidth] h-[--bounceButtonWidth] rounded-full bg-lime-400 hover:bg-lime-300 ring ring-inset ring-lime-500 active:ring-sky-200 fallDown sticky transition-all m-3 z-100 text-white hover:text-black'
 
     useEffect(() => {
         if (buttonRef.current) {
