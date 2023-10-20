@@ -34,8 +34,10 @@ const TextPhysics: React.FC = () => {
 
 
     const handleResize = () => {
-      render.canvas.width = containerWidth;
+      const newWidth = container.getBoundingClientRect().width;
+      render.canvas.width = newWidth;
       render.canvas.style.width = '100%';  // Ensure the canvas takes up the full window width
+      render.canvas.style.minHeight = '250px';
       groundWidth = 0.9 * containerWidth;
       
       Matter.Body.setPosition(ground, {
@@ -157,7 +159,7 @@ boxes.forEach((box, i) => {
       };
   }, []);
 
-  return <div id="textPhysicsContainer" className=" h-[250px] relative" style={{ width: '100%' }}></div>;
+  return <div id="textPhysicsContainer" className=" h-[250px]  relative" style={{ width: '100%' }}></div>;
 };
 
 export default TextPhysics;
