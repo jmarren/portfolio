@@ -11,10 +11,10 @@ export default function Layout() {
         { name: 'Resume', url: '/pdfs/Resume_9_8.pdf'}
       ];
     return (
-<div className="flex flex-grow flex-col  m-0 bg-white mb-0 pb-4">
+<div className="flex flex-grow flex-col  m-0 bg-yellow-200 mb-0 pb-4">
 
 <a href='/'>
-<div className="h-[250px] bg-white z-0 ">
+<div className="h-[250px] bg-yellow-200 z-0 ">
   <TextPhysics />
 </div></a>
 

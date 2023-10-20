@@ -22,7 +22,7 @@ const ButtonTwo: React.FC<ButtonTwoProps> = ({ text, onClick }) => {
     ? 'bg-slate-300 m-3 w-5/6 h-12  ring-2 ring-inset border-slate-200 box-border rounded-3xl'
     : 'bg-slate-300 m-3 w-5/6 h-12 ring-2 ring-inset ring-slate-200 box-border rounded-lg active:rounded-2xl'
   return (
-    <div className={divClass}> 
+    <div className={divClass} onClick={handleButtonClick}> 
     <button className={buttonClass} onClick={handleButtonClick}>
       {text}
     </button>
