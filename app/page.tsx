@@ -14,10 +14,11 @@ export default function Home() {
         <div className="w-full min-h-screen ">
             <div className='parkay-floor h-full w-full fixed z-0'>
             </div>
-            <div className='bg-slate-300 z-[20] w-5/6 h-full absolute left-[8.3vw] top-4 rounded-3xl'  >       
+            <div className='bg-slate-300 z-[20] w-5/6 h-full relative left-[8.3vw] top-4 rounded-3xl' id="LayoutContainer "  >    
+                <Layout />
                 </div>
             <div className='z-[200]  absolute'>
-                <Layout />
+        
                 </div>
         </div>
 

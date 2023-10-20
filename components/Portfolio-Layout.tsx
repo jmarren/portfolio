@@ -13,7 +13,7 @@ export default function Layout() {
     return (
 <div className="flex flex-grow flex-col  m-0 bg-white mb-0">
 
-<div className="h-[250px] bg-white z-0">
+<div className="h-[250px] bg-white z-0 ">
   <TextPhysics />
 </div>
 

@@ -8,10 +8,13 @@ import Matter from 'matter-js';
 const TextPhysics: React.FC = () => {
   useEffect(() => {
 
+    const container = document.getElementById('textPhysicsContainer') as HTMLElement;
+    const containerWidth = container.getBoundingClientRect().width
+    console.log(containerWidth)
 
     
-    let groundWidth: number = 0.9 * window.innerWidth;
-    let screenWidth: number = window.innerWidth;
+    let groundWidth: number = 0.9 * containerWidth;
+    let screenWidth: number = containerWidth;
     const engine = Matter.Engine.create();
     const Composite = Matter.Composite;
     const { world } = engine;
@@ -22,18 +25,18 @@ const TextPhysics: React.FC = () => {
       element: document.getElementById('textPhysicsContainer') as HTMLElement,
       engine,
       options: {
-        width: window.innerWidth * 0.95,
+        width: containerWidth * 0.95,
         height: 220,
         wireframes: false,
-        background: 'transparent'
+        background: 'transparent',
       },
     });
 
 
     const handleResize = () => {
-      render.canvas.width = window.innerWidth;
+      render.canvas.width = containerWidth;
       render.canvas.style.width = '100%';  // Ensure the canvas takes up the full window width
-      groundWidth = 0.9 * window.innerWidth;
+      groundWidth = 0.9 * containerWidth;
       
       Matter.Body.setPosition(ground, {
         x: groundWidth / 1.8,
@@ -154,7 +157,7 @@ boxes.forEach((box, i) => {
       };
   }, []);
 
-  return <div id="textPhysicsContainer" className="fixed h-[250px]" style={{ width: '100%' }}></div>;
+  return <div id="textPhysicsContainer" className=" h-[250px] relative" style={{ width: '100%' }}></div>;
 };
 
 export default TextPhysics;

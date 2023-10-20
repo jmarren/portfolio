@@ -11,9 +11,9 @@ export default function Layout() {
       ];
 
     return (
-        <div className="z-[100] w-[100%] h-full bg-slate-200 ">        
+        <div className="z-0 w-[100%] h-full bg-slate-200 ">        
             <TextPhysics />
-            <div className="w-[100%] top-[280px] fixed">     
+            <div className="w-[100%] top-[280px] relative">     
                 <Navbar links={links}/>
             </div>
         </div>
