@@ -177,7 +177,7 @@ boxes.forEach((box, i) => {
       };
   }, []);
 
-  return <div id="textPhysicsContainer" className=" h-[250px] justify-center relative border border-black" style={{ width: '100%' }}></div>;
+  return <div id="textPhysicsContainer" className=" h-[250px] justify-center relative " style={{ width: '100%' }}></div>;
 };
 
 export default TextPhysics;
