@@ -36,7 +36,7 @@ const TextPhysics: React.FC = () => {
     const handleResize = () => {
       const newWidth = container.getBoundingClientRect().width;
       render.canvas.width = newWidth;
-      render.canvas.style.width = '100%';  // Ensure the canvas takes up the full window width
+      render.canvas.style.width = '83.3%';  // Ensure the canvas takes up the full window width
       render.canvas.style.minHeight = '250px';
       groundWidth = 0.9 * containerWidth;
       
